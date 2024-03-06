@@ -1,9 +1,10 @@
 const mysql = require('mysql')
 const db = mysql.createConnection({
-    host:"localhost",
+    host:"monorail.proxy.rlwy.net",
     user:"root",
-    password:"",
-    database:"myfinancetest"
+    password:"HeBG4b1B-421g3bB-3HHA62EGg5gF-1c",
+    port:10335,
+    database:"railway"
 })
 
 var allowCrossDomain = function(req, res, next) {
