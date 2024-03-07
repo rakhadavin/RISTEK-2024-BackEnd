@@ -9,5 +9,5 @@ res.status(statusCode).json( // res.send == res.status(statiscode)
 }
 )
 }
-export default response
+module.exports = response
 
