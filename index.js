@@ -38,7 +38,7 @@ app.get('/user', (req, res) => {
 
 app.get('/user/:user_id', (req, res) => {
     const userid = req.params.user_id
-    db.query(`SELECT * FROM user WHERE id = '${userid}'`, (error, result) => {
+    db.query(`SELECT * FROM user `, (error, result) => {
             console.log(userid)
             console.log(error)
             error.fatal = true
