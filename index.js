@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT||3000
+const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const db = require("./connection")
 const response = require("./response")
@@ -25,10 +25,9 @@ app.get('/user', (req, res) => {
     console.log("User Getted")
     db.query("SELECT * FROM USER", (error, result) => {
 
-        console.log(userid)
         console.log(error)
         console.log(result)
-   
+
 
         response(200, result, "Berhasil mendapatkan users", res)
     })
@@ -39,9 +38,9 @@ app.get('/user', (req, res) => {
 app.get('/user/:user_id', (req, res) => {
     const userid = req.params.user_id
     db.query(`SELECT * FROM USER WHERE id = '${userid}'`, (error, result) => {
-            console.log(userid)
-            console.log(error)
-            console.log(result)
+        console.log(userid)
+        console.log(error)
+        console.log(result)
         // res.send("Succsessfully to get Users") 
         // res.json(result)
 
@@ -51,72 +50,72 @@ app.get('/user/:user_id', (req, res) => {
 })
 
 app.put("/update-amount/:userID", (req, res) => {
-    const amount= req.body.amount;
-    var newAmount =0;
+    const amount = req.body.amount;
+    var newAmount = 0;
     const userID = req.params.userID
     const category = req.body.category
     const getUser = `SELECT * FROM user WHERE id = '${userID}'`
     db.query(getUser, (error, fields) => {
-        if(error)throw error
-        else if ((fields == [] || fields == NULL)){
+        if (error) throw error
+        else if ((fields == [] || fields == NULL)) {
             res.json("404 Not Found ")
 
         }
-        else{
-            console.log("Checking : ",fields)
-            var Oldamount  = fields[0].amount
-            if(category.toLowerCase() == "income"){
+        else {
+            console.log("Checking : ", fields)
+            var Oldamount = fields[0].amount
+            if (category.toLowerCase() == "income") {
                 newAmount = parseInt(amount) + parseInt(Oldamount)
-                
-            }else{
-                newAmount = Oldamount-amount 
+
+            } else {
+                newAmount = Oldamount - amount
 
             }
             console.log(fields[0].amount)
-            console.log("Error : ",error)
+            console.log("Error : ", error)
             const sqlCommand = `UPDATE user SET amount='${newAmount}' WHERE id = '${userID}'`
             db.query(sqlCommand, (error, fields) => {
-                if(error)throw error
-                else{
+                if (error) throw error
+                else {
                     console.log(fields)
                 }
-        
+
             })
         }
 
     })
 
-  console.log(userID)
-  
+    console.log(userID)
+
     console.log(req.params)
     res.json(`Berhasil melakukan perubahan dengan id nomor ${userID}`)
-  })
+})
 
 
-  app.put("/user-profile/:user_id", (req, res) => {
+app.put("/user-profile/:user_id", (req, res) => {
     const userID = req.params.user_id;
     const name = req.body.name;
     const username = req.body.username;
-    const amount= req.body.amount;
+    const amount = req.body.amount;
     const image_link = req.body.image_link;
     console.log(req.body)
-  
+
     const sqlCommand = `UPDATE user SET name ='${name}', username ='${username}', amount='${amount}', image='${NULL}' WHERE id = '${userID}'`
-  console.log("berhasil masuk update")
+    console.log("berhasil masuk update")
     db.query(sqlCommand, (error, fields) => {
-        if(error)throw error
-        else{
+        if (error) throw error
+        else {
 
             console.log(`{fields : '${fields}'}`)
         }
     })
-  
-    
-  
-  
-  
+
+
+
+
+
     res.json(`Berhasil melakukan perubahan dengan id nomor ${userID}`)
-  })
+})
 
 
 
@@ -126,7 +125,7 @@ app.get('/user-record/:user_id', (req, res) => {
     db.query(`SELECT * FROM records WHERE user_id = ${userId}`, (error, result) => {
         console.log(result)
         console.log(error)
- 
+
 
         response(200, result, "Berhasil mendapatkan record", res)
     })
@@ -165,8 +164,8 @@ app.post('/user', (req, res) => {
         }
         // console.log(`fields : ${fields.affectedRows}`)
         console.log(username)
-        })
-    
+    })
+
 })
 
 
@@ -179,7 +178,7 @@ app.post('/user-record', (req, res) => {
     var amount = req.body.amount
     var date = req.body.date
 
-    
+
     var command = `INSERT INTO records (user_id,description,category,amount,dates) VALUES ('${userId}','${description}','${category}','${amount}','${date}')`
     db.query(command, (error, fields) => {
         if (error) throw error
@@ -187,8 +186,8 @@ app.post('/user-record', (req, res) => {
             res.send(`Berhasil menambahkan record  ${description}`)
         }
         // console.log(`fields : ${fields.affectedRows}`)
-        })
-    
+    })
+
 })
 
 
