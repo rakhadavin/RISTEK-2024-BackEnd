@@ -26,8 +26,8 @@ app.get('/user', (req, res) => {
     db.query("SELECT * FROM USER", (error, result) => {
 
         console.log(error)
-            console.log(result)
-        res.send("Succsessfully to get Users") 
+        console.log(result)
+        res.send("Succsessfully to get Users -- > ",result) 
         // res.json(result)
 
         response(200, result, "Berhasil mendapatkan users", res)
