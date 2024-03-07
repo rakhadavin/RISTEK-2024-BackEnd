@@ -39,9 +39,9 @@ app.get('/user', (req, res) => {
 app.get('/user/:user_id', (req, res) => {
     const userid = req.params.user_id
     db.query(`SELECT * FROM USER WHERE id = '${userid}'`, (error, result) => {
-            console.log("USER ID : ",userid)
+            console.log(userid)
             console.log(error)
-            console.log("RESULT : ",result[0])
+            console.log(result[0])
         // res.send("Succsessfully to get Users") 
         // res.json(result)
 
