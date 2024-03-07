@@ -18,7 +18,7 @@ app.use(cors({
 
 app.get('/', (req, res) => {
     console.log("normal")
-    res.send("ok")
+    res.send("Successfully connected to the database.")
 })
 
 app.get('/user', (req, res) => {
