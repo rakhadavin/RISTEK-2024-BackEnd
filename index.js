@@ -40,7 +40,7 @@ app.get('/user/:user_id', (req, res) => {
     const userid = req.params.user_id
     db.query(`SELECT * FROM user `, (error, result) => {
             console.log(userid)
-            console.log(error)
+            console.log(result)
             error.fatal = true
             console.trace()
         // res.send("Succsessfully to get Users") 
