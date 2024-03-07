@@ -3,7 +3,7 @@ const app = express()
 const port = process.env.PORT||3000
 const bodyParser = require('body-parser')
 const db = require("./connection")
-const response = require("./response").default
+const response = require("./response")
 const cors = require('cors')
 const { NULL } = require('mysql/lib/protocol/constants/types')
 
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 app.get('/user', (req, res) => {
     console.log("User Getted")
     db.query("SELECT * FROM USER", (error, result) => {
-        if(error)throw error
+        if (error)throw error
         else{
 
             console.log(result)
