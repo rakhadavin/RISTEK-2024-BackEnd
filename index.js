@@ -27,7 +27,7 @@ app.get('/user', (req, res) => {
 
         console.log(error)
         console.log(result)
-        res.send("Succsessfully to get Users -- > ",result) 
+        res.send("Succsessfully to get Users -- > ") 
         // res.json(result)
 
         response(200, result, "Berhasil mendapatkan users", res)
