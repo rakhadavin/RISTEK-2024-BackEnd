@@ -24,11 +24,9 @@ app.get('/', (req, res) => {
 app.get('/user', (req, res) => {
     console.log("User Getted")
     db.query("SELECT * FROM USER", (error, result) => {
-        if (error)throw error
-        else{
 
+        console.log(error)
             console.log(result)
-        }
         res.send("Succsessfully to get Users") 
         // res.json(result)
 
