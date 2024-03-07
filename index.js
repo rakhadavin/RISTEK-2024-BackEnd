@@ -11,7 +11,7 @@ require('dotenv').config();
 app.use(bodyParser.json());
 // app.use(bodyParser.json)
 app.use(cors({
-    origin: "https://myfinance88.vercel.app/",
+    origin: "https://myfinance88.vercel.app",
 }))
 
 
