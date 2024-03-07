@@ -25,11 +25,10 @@ app.get('/user', (req, res) => {
     console.log("User Getted")
     db.query("SELECT * FROM USER", (error, result) => {
 
+        console.log("USER ID : ",userid)
         console.log(error)
-        console.log(result)
-        // res.json("Succsessfully to get Users -- > ",result) 
-        // res.status(200).send(result) 
-        // res.json(result)
+        console.log("RESULT : ",result)
+   
 
         response(200, result, "Berhasil mendapatkan users", res)
     })
@@ -40,15 +39,13 @@ app.get('/user', (req, res) => {
 app.get('/user/:user_id', (req, res) => {
     const userid = req.params.user_id
     db.query(`SELECT * FROM USER WHERE id = '${userid}'`, (error, result) => {
-            console.log(userid)
+            console.log("USER ID : ",userid)
             console.log(error)
-            console.log(result)
-            error.fatal = true
-            console.trace()
+            console.log("RESULT : ",result[0])
         // res.send("Succsessfully to get Users") 
         // res.json(result)
 
-        response(200, result, "Berhasil mendapatkan users", res)
+        response(200, result, "Berhasil mendapatkan users deengan id", res)
     })
     // res.send("User Getted")
 })
