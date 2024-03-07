@@ -11,7 +11,7 @@ require('dotenv').config();
 app.use(bodyParser.json());
 // app.use(bodyParser.json)
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin: "https://myfinance-backend.up.railway.app/",
 }))
 
 
