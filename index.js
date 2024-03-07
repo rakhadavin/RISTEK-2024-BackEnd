@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.get('/user', (req, res) => {
     console.log("User Getted")
-    db.query("SELECT * FROM user", (error, result) => {
+    db.query("SELECT * FROM USER", (error, result) => {
         console.log(result)
         console.log(error)
         console.log()
